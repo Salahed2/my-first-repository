@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Simple</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Entrez un nombre" required>
+    <input type="number" id="num2" placeholder="Entrez un autre nombre" required><br><br>
+    <button onclick="calculer('+')">Addition (+)</button>
+    <button onclick="calculer('-')">Soustraction (-)</button>
+    <button onclick="calculer('*')">Multiplication (×)</button>
+    <button onclick="calculer('/')">Division (÷)</button><br><br>
+    <h2>Résultat: <span id="resultat">0</span></h2>
+
+    <script>
+        function calculer(operation) {
+           
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let resultat = 0;
+
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Veuillez entrer des nombres valides !");
+                return;
+            }
+
+            
+            switch (operation) {
+                case '+':
+                    resultat = num1 + num2;
+                    break;
+                case '-':
+                    resultat = num1 - num2;
+                    break;
+                case '*':
+                    resultat = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        alert("La division par zéro n'est pas autorisée !");
+                        return;
+                    }
+                    resultat = num1 / num2;
+                    break;
+                default:
+                    alert("Opération invalide");
+                    return;
+            }
+
+        
+            document.getElementById("resultat").textContent = resultat;
+        }
+    </script>
+
+</body>
+</html>
